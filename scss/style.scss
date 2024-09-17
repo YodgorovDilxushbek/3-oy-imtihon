@@ -36,12 +36,78 @@ body {
 
 }
 
+
 .container {
     max-width: 1110px;
     width: 100%;
     margin: 0 auto;
-}
 
+}
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 1s ease-out;
+
+  }
+  .image {
+    perspective: 3000px;
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+  }
+  .image img {
+    transform: rotateX(70deg) rotateZ(-60deg) translate3d(-120px, 0px, 70px);
+    box-shadow: -80px 60px 15px 5px rgba(0,0,0,0.4);
+    transition: all .4s;
+    transform-style: preserve-3d;
+  }
+  .image:hover img {
+    transform: rotateX(0deg) rotateZ(0deg) translate3d(0px, 0px, 0px);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
+  }
+  
+  
+  .splash-screen img {
+    width: 150px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    display:none 2s;
+  }
+  
+  .main-content {
+
+    
+  }
+  
+  .main-content.visible {
+    display: block;
+  }
+  
 .header_container {
     font-family: 'Hind Siliguri';
     justify-content: space-between;
@@ -78,8 +144,10 @@ body {
 
 button {
     padding: 15px 17px;
+border: none;
 
     background-color: #fff;
+    border: 1px solid rgba(255, 114, 53, 1);
     color: rgba(255, 114, 53, 1);
     cursor: pointer;
     align-items: center;
@@ -101,6 +169,7 @@ button:hover {
     display: flex;
     gap: 30px;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 210px;
 
 }
@@ -153,6 +222,21 @@ button:hover {
     }
 
 }
+.img{
+img{
+    width: 438px;
+    height: 378px;
+transition: all 0.5s linear;
+}
+img:hover{
+    width: 538px;
+    height: 378px;
+
+}
+
+    
+      }
+
 
 .bg_color {
 
@@ -297,8 +381,8 @@ button:hover {
 
 .card {
     border: 1px solid rgba(255, 255, 255, 1);
-    width: 350px;
-    height: 350px;
+    width: 470px;
+    height: 450px;
     border-radius: 12px 0px 0px 0px;
     opacity: 0px;
     padding-top: 65px;
@@ -307,6 +391,42 @@ button:hover {
     padding-bottom: 111px;
     text-align: center;
     transition: all 0.8s ease;
+    img {
+        --s: 15px;  /* size of the frame */
+        --b: 2px;   /* border thickness */
+        --w: 200px; /* width of the image */
+        --c: #7B3B3B;
+        border-radius: 50%;
+        
+        width: var(--w);
+        aspect-ratio: 1;
+        object-fit: cover;
+        padding: calc(2*var(--s));
+        --_g: var(--c) var(--b),#0000 0 calc(100% - var(--b)),var(--c) 0;
+        background:
+          linear-gradient(      var(--_g)) 50%/100% var(--_i,100%) no-repeat,
+          linear-gradient(90deg,var(--_g)) 50%/var(--_i,100%) 100% no-repeat;
+        outline: calc(var(--w)/2) solid #0009;
+        outline-offset: calc(var(--w)/-2 - 2*var(--s));
+        transition: .4s;
+        cursor: pointer;
+      }
+      img:hover {
+        outline: var(--b) solid var(--c);
+        outline-offset: calc(var(--s)/-2);
+        --_i: calc(100% - 2*var(--s));
+      }
+      
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-content: center;
+        align-items: center;
+        grid-auto-flow: column;
+        gap: 20px;
+        background: #e8e8e8;
+      }
 
     h3 {
         font-family: 'Hind Siliguri';
@@ -599,6 +719,9 @@ button:hover {
 
     @extend .button1
 }
+.image_right{
+    display: none;
+}
 
 .footer_container {
     font-family: 'Hind Siliguri';
@@ -749,74 +872,73 @@ button:hover {
 
 
 
-.real_title {
-    padding-left: 15px;
+    .real_title {
+        padding-left: 15px;
 
-    h2 {
-        font-size: 52px;
-        line-height: 52px;
-
-    }
-
-    p {
-        font-size: 20px;
-        line-height: 30px;
-    }
-
-}
-
-.free_title {
-    h2 {
-        font-size: 52px;
-        line-height: 52px;
-
-    }
-
-    p {
-        font-size: 20px;
-        line-height: 20px;
-
-    }
-}
-
-.real_title {
-    h2 {
-        font-size: 52px;
-        line-height: 52px;
-
-    }
-
-    p {
-        font-size: 20px;
-        line-height: 20px;
-
-    }
-}
-
-.work_title {
-    padding-left: 15px;
-
-    h2 {
-        font-size: 60px;
-        line-height: 52px;
-    }
-}
-
-.work_subtitle {
-    p {
-        font-size: 20px;
-        line-height: 20px;
-    }
-
-
-.title1_container {
         h2 {
             font-size: 52px;
-            line-height: 52px
+            line-height: 52px;
+
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 30px;
+        }
+
+    }
+
+    .free_title {
+        h2 {
+            font-size: 52px;
+            line-height: 52px;
+
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 20px;
+
         }
     }
 
+    .real_title {
+        h2 {
+            font-size: 52px;
+            line-height: 52px;
 
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 20px;
+
+        }
+    }
+
+    .work_title {
+        padding-left: 15px;
+
+        h2 {
+            font-size: 60px;
+            line-height: 52px;
+        }
+    }
+
+    .work_subtitle {
+        p {
+            font-size: 20px;
+            line-height: 20px;
+        }
+
+
+        .title1_container {
+            h2 {
+                font-size: 52px;
+                line-height: 52px
+            }
+        }
+
+
+    }
 }
-
-@media (max-width: 768px)

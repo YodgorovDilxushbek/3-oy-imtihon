@@ -11,9 +11,89 @@
     <!-- General -->
     <link rel="stylesheet" href="./css/style.css">
     <title>3-oy imtihon</title>
+    <style>
+        /* Logotipni ko'rsatish uchun CSS */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 1s ease-out;
+        }
+
+        .splash-screen img {
+            width: 150px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .main-content {
+            display: none;
+        }
+
+        .main-content.visible {
+            display: block;
+        }
+    </style>
 </head>
 
+
+
 <body>
+
+    <div class="splash-screen" id="splashScreen">
+        <img src="./images/Feather-core-loader.png" alt="Logo">
+    </div>
+
+
+
+    <script>
+        window.onload = function () {
+            // 2 soniyadan keyin splash-screen yo'q bo'lishi va asosiy kontent ko'rsatilishi kerak
+            setTimeout(function () {
+                // Splash-screenni yashirish
+                document.getElementById('splashScreen').classList.add('hidden');
+
+                // 1 soniya kutib, asosiy kontentni ko'rsatish
+                setTimeout(function () {
+                    document.getElementById('mainContent').classList.add('visible');
+                }, 1000); // 1000 millisekund (1 soniya)
+
+            }, 2000); // 2000 millisekund (2 soniya)
+        };
+    </script>
+
+
+    <!--     
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div> -->
+
+
     <header class="header">
         <div class="container header_container">
             <div class="logo">
@@ -28,7 +108,14 @@
                 </ul>
             </nav>
             <button>
-                Request a demo
+                <script>
+                    document.getElementById('soundButton').addEventListener('click', function() {
+  var sound = document.getElementById('buttonSound');
+  sound.play( <audio id="buttonSound" src="cat-98721.mp3"></audio>); // Ovoz faylini ijro etish
+ 
+});
+                </script>
+               <h3> Request a demo</h3>
             </button>
         </div>
     </header>
@@ -51,13 +138,13 @@
             </div>
         </div>
         <div class="img">
-            <img src="./images/Illustration.png" width="538" height="478" alt=" ">
+            <img src="./images/Illustration.png"width="538" height="478"alt="an old car">
         </div>
     </div>
     <div class="bg_color">
         <div class="container active_container">
-            <div class="activ_image">
-                <img src="./images/active.png" width="1100" height="625" alt="">
+            <div class="active_image">
+                <img class="" src="./images/active.png" width="1100" height="625" alt="">
             </div>
 
         </div>
@@ -140,7 +227,7 @@
             <img class="icon_image" src="./images/icon_2e.svg" alt="">
             <h3>Cross platform</h3>
             <p>Elit esse cillum dolore eu fugiat nulla pariatur</p>
-            <img src="./images/ic_twotone-arrow-right-alt.svg" alt="">
+           <a href="#"> <img class="image_right" src="./images/ic_twotone-arrow-right-alt.svg" alt=""></a>
         </div>
         <div class="card">
             <img class="icon_image" src="./images/icon_3.svg" alt="">
@@ -214,7 +301,8 @@
                 <p>Elit esse cillum dolore eu fugiat nulla pariatur</p>
             </div>
             <div class="card">
-                <img class="icon_image" src="./images/icons3.svg" alt="">
+                <!-- <img class="icon_image" src="./images/icons3.svg" alt=""> -->
+                <img src="./images/icons3.svg" alt="an old car">
                 <h3>Cross platform</h3>
                 <p>Elit esse cillum dolore eu fugiat nulla pariatur</p>
             </div>
@@ -239,58 +327,58 @@
     </div>
 
     <div class="container footer_container">
-<div class="logo">
-    <a href=""><img src="./images/x_logo.svg" alt=""></a>
-</div>
-<div class="links">
-    <h4>Links</h4>
-    <p>Home</p>
-    <p>Aboutus</p>
-    <p>Careers</p>
-    <p>Pricing</p>
-    <p>Features</p>
-    <p>Blog</p>
-</div>
-<div class="links">
-    <h4>Legal</h4>
-<p>Terms ofuse</p>
-<p>Terms ofconditions</p>
-<p>Privecypolicy</p>
-<p>Cookiepolicy</p>
-</div>
-<div class="Newsletter">
-    <h3>Newsletter</h3>
-    <p>Over 25000 people have subscribed</p>
-    <div class="info">
-        <form class="form">
-            <input type="text" name="" id="input" placeholder="Search here...">
+        <div class="logo">
+            <a href=""><img src="./images/x_logo.svg" alt=""></a>
+        </div>
+        <div class="links">
+            <h4>Links</h4>
+            <p>Home</p>
+            <p>Aboutus</p>
+            <p>Careers</p>
+            <p>Pricing</p>
+            <p>Features</p>
+            <p>Blog</p>
+        </div>
+        <div class="links">
+            <h4>Legal</h4>
+            <p>Terms ofuse</p>
+            <p>Terms ofconditions</p>
+            <p>Privecypolicy</p>
+            <p>Cookiepolicy</p>
+        </div>
+        <div class="Newsletter">
+            <h3>Newsletter</h3>
+            <p>Over 25000 people have subscribed</p>
+            <div class="info">
+                <form class="form">
+                    <input type="text" name="" id="input" placeholder="Search here...">
 
-            <label for="input">
-                <div class="button__1"> Subscribe</div>
-            </label>
-        </form>
-        
-                    
-                </div>
-<p>We don’t sell your email and spam</p>
-</div>
+                    <label for="input">
+                        <div class="button__1"> Subscribe</div>
+                    </label>
+                </form>
+
+
+            </div>
+            <p>We don’t sell your email and spam</p>
+        </div>
     </div>
 
-<div class="container end_container">
-<div class="end_title">
-    <p>Privacy & Terms</p>
-    <p>Contact Us</p>
-</div>
-<div class="subtitle_end">
-    <p>Copyright @ 2022 xpence</p>
-</div>
-<div class="images_end">
-    <img src="./images/facebook-square.svg" alt="">
-<img src="./images/twitter-square.svg" alt="">
-<img src="./images/linkedin.svg" alt="">
-</div>
-</div>
-<div class="loader"></div>
+    <div class="container end_container">
+        <div class="end_title">
+            <p>Privacy & Terms</p>
+            <p>Contact Us</p>
+        </div>
+        <div class="subtitle_end">
+            <p>Copyright @ 2022 xpence</p>
+        </div>
+        <div class="images_end">
+            <img src="./images/facebook-square.svg" alt="">
+            <img src="./images/twitter-square.svg" alt="">
+            <img src="./images/linkedin.svg" alt="">
+        </div>
+    </div>
+    <div class="loader"></div>
 </body>
 
 </html>
